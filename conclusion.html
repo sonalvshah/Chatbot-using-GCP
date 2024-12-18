@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>UC Chatbot - Conclusion</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #FFFFFF; /* White */
+            color: #333333; /* Dark Gray */
+        }
+        .navbar {
+            background-color: #E00122; /* Red */
+        }
+        .navbar-brand {
+            color: #FFFFFF !important;
+        }
+        .container {
+            margin-top: 100px;
+        }
+        .card {
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #F8F9FA; /* Light Gray */
+        }
+        li, p {
+            color: #333333; /* Dark Gray */
+        }
+        footer {
+            background-color: #E00122; /* Red */
+            color: #FFFFFF;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a class="navbar-brand" href="#">University of Cincinnati</a>
+    </nav>
+    <div class="container">
+        <div class="card">
+            <h2 class="text-center">Thank You for Using the UC Chatbot!</h2>
+            <p><strong>Your Information:</strong></p>
+            <ul>
+                <li>First Name: {{ user_first_name }}</li>
+                <li>Last Name: {{ user_last_name }}</li>
+                <li>Email Address: {{ user_email }}</li>
+            </ul>
+            <p><strong>Chatbot Creator's Information:</strong></p>
+            <ul>
+                <li>First Name: Sonal Vikram</li>
+                <li>Last Name: Shah</li>
+                <li>Email Address: shah5sv@mail.uc.edu</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

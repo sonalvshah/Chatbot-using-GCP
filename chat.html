@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>UC Chatbot - Chat</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Dialogflow Messenger -->
+    <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+    <style>
+        body {
+            background-color: #FFFFFF; /* White */
+            color: #333333; /* Dark Gray */
+        }
+        .navbar {
+            background-color: #E00122; /* Red */
+        }
+        .navbar-brand {
+            color: #FFFFFF !important;
+        }
+        df-messenger {
+            --df-messenger-bot-message: #F8F9FA; /* Light Gray */
+            --df-messenger-button-titlebar-color: #E00122; /* Red */
+            --df-messenger-chat-background-color: #FFFFFF; /* White */
+            --df-messenger-font-color: #333333; /* Dark Gray */
+            --df-messenger-send-icon: #E00122; /* Red */
+            --df-messenger-user-message: #E00122; /* Red */
+            --df-messenger-user-message-font-color: #FFFFFF; /* White */
+            --df-messenger-bot-message-font-color: #333333; /* Dark Gray */
+            --df-messenger-input-box-color: #F8F9FA; /* Light Gray */
+            --df-messenger-input-font-color: #333333; /* Dark Gray */
+            --df-messenger-input-placeholder-font-color: #666666; /* Placeholder Gray */
+        }
+        df-messenger .chat-wrapper .message-list .user-message .message {
+            color: var(--df-messenger-user-message-font-color) !important;
+        }
+        df-messenger .chat-wrapper .message-list .bot-message .message {
+            color: var(--df-messenger-bot-message-font-color) !important;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        h2 {
+            color: #333333; /* Dark Gray */
+        }
+        ul {
+            color: #333333; /* Dark Gray */
+        }
+        .thank-you-note {
+            margin-top: 20px;
+            font-style: italic;
+            color: #666666; /* Placeholder Gray */
+        }
+        footer {
+            background-color: #E00122; /* Red */
+            color: #FFFFFF;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a class="navbar-brand" href="#">University of Cincinnati</a>
+    </nav>
+    <div class="container">
+        <h2 class="text-center">Chat with the UC Chatbot</h2>
+        <p>You can ask the following questions:</p>
+        <ul>
+            <li>Is there a football team?</li>
+            <li>Is there a Computer Science program?</li>
+            <li>How much is the tuition fee for residents?</li>
+            <li>Can I live on campus?</li>
+        </ul>
+        <p class="thank-you-note">Type "Thank you" when you're ready to conclude the chat.</p>
+        <df-messenger
+            intent="WELCOME"
+            chat-title="UC Bearcats Chatbot"
+            agent-id="26611bab-2c23-4952-a051-24f65dec3f2a"
+            language-code="en"
+        ></df-messenger>
+        <form id="conclusion-form" method="GET" action="/conclusion">
+            <input type="hidden" name="first_name" value="{{ first_name }}">
+            <input type="hidden" name="last_name" value="{{ last_name }}">
+            <input type="hidden" name="email" value="{{ email }}">
+        </form>
+        <script>
+            const dfMessenger = document.querySelector('df-messenger');
+            dfMessenger.addEventListener('df-response-received', function(event) {
+                const messages = event.detail.response.queryResult.fulfillmentText;
+                if (messages.includes('Thank you for chatting')) {
+                    document.getElementById('conclusion-form').submit();
+                }
+            });
+        </script>
+    </div>
+</body>
+</html>
