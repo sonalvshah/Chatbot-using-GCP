@@ -33,6 +33,4 @@ The chatbot can handle at least four common student queries, such as:
 The chatbot provides detailed answers to each of the above queries. It uses Dialogflow for NLP processing, ensuring that the chatbot can understand variations of these questions and provide relevant responses.
 
 4. Deployment & Submission:  
-The chatbot is deployed on Google Cloud Platform and accessible via the following URL:
-
-🔗 Chatbot Live URL : https://ucbearcatsbot.uc.r.appspot.com 
+The chatbot is deployed on Google Cloud Platform. 
